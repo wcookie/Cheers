@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="io.wcookie.com.cheers.AddDrinks"
+    tools:showIn="@layout/activity_add_drinks">
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="100dp"
+        android:id="@+id/cv"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/plusButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/drinkCount" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:id="@+id/drinkCount"
+                android:textSize="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/minusButton"
+                android:layout_alignTop="@+id/drinkCount"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Add Drinks!"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="100dp"
+        android:id="@+id/cv2"
+        android:layout_below="@+id/cv"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:id="@+id/relativeLayout2">
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/bacLevel"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Sober"
+            android:id="@+id/intoxicationLevel"
+            android:layout_below="@+id/bacLevel"
+            android:textSize="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="BAC Level:"
+            android:id="@+id/newBAC"
+            android:textSize="25dp"
+            android:layout_below="@+id/bacLevel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="200dp"
+        android:id="@+id/cv3"
+        android:layout_below="@+id/cv2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/relativeLayout3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/test"
+                android:text="Contact Chris"
+                android:textSize = "25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/callFriend"
+                android:src="@drawable/phone"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="27dp"
+                android:layout_marginEnd="27dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/msgFriend"
+                android:layout_toStartOf="@+id/msgFriend" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/msgFriend"
+                android:src="@drawable/chat"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/contactFriend2"
+                android:text="Contact Wyatt"
+                android:textSize = "25dp"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/test"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/callFriend2"
+                android:src="@drawable/phone"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="17dp"
+                android:layout_marginRight="27dp"
+                android:layout_marginEnd="27dp"
+                android:layout_below="@+id/callFriend"
+                android:layout_toLeftOf="@+id/msgFriend"
+                android:layout_toStartOf="@+id/msgFriend" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/msgFriend2"
+                android:src="@drawable/chat"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="17dp"
+                android:background="@android:color/transparent"
+                android:layout_below="@+id/msgFriend"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/contactRedWatchBand"
+                android:text="Contact Red Watch Band"
+                android:textSize = "25dp"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/contactFriend2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/contactFriend2"
+                android:layout_alignEnd="@+id/contactFriend2" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/callRedWatchBand"
+                android:src="@drawable/phone"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="27dp"
+                android:layout_marginEnd="27dp"
+                android:layout_below="@+id/callFriend2"
+                android:layout_toLeftOf="@+id/msgFriend"
+                android:layout_toStartOf="@+id/msgFriend" />
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/msgRedWatchBand"
+                android:src="@drawable/chat"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:layout_below="@+id/msgFriend2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
