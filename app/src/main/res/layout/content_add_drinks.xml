@@ -32,15 +32,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/drinkCount" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="0"
-                android:id="@+id/drinkCount"
-                android:textSize="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0"
+            android:id="@+id/drinkCount"
+            android:textSize="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
             <Button
                 android:layout_width="wrap_content"

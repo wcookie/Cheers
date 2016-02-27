@@ -1,28 +1,65 @@
 package io.wcookie.com.cheers;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 
 public class AddDrinks extends AppCompatActivity {
 
+    private Button plusButton;
+    private Button minusButton;
+    private TextView drinkCount;
+    private int numberOfDrinks;
+    private TextView intoxicationLevel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drinks);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        plusButton = (Button) findViewById(R.id.plusButton);
+        minusButton = (Button) findViewById(R.id.minusButton);
+        drinkCount = (TextView) findViewById(R.id.drinkCount);
+        intoxicationLevel = (TextView) findViewById(R.id.intoxicationLevel);
+        numberOfDrinks=0;
+        ApplicationSettings.setBooleanPref(getApplicationContext(),"changeSettings",false);
+
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                numberOfDrinks++;
+                drinkCount.setText(""+numberOfDrinks);
+                intoxicationLevel.setText(checkDrunkeness());
+            }
+
+        });
+
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if(numberOfDrinks>0) {
+                    numberOfDrinks--;
+                    drinkCount.setText(""+numberOfDrinks);
+                    intoxicationLevel.setText(checkDrunkeness());
+                }
+            }
+
+        });
 
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_drinks, menu);
         return true;
@@ -30,16 +67,44 @@ public class AddDrinks extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_changeRegistration) {
+
+            ApplicationSettings.setBooleanPref(getApplicationContext(),"changeSettings",true);
+            Intent i = new Intent(AddDrinks.this, Registration.class);
+            startActivity(i);
+        }
+
+        else if(id == R.id.action_changeContacts){
+
+        }
+
+        else if(id == R.id.action_changeText){
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String checkDrunkeness(){
+
+        String toReturn;
+
+        if(numberOfDrinks<5)
+            toReturn="Sober";
+        else if(numberOfDrinks<10)
+            toReturn="Tipsy";
+        else if(numberOfDrinks<15)
+            toReturn="Drunk";
+        else
+            toReturn="Call for Help";
+
+        return toReturn;
     }
 }
