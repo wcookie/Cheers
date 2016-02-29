@@ -123,6 +123,7 @@ public class AddDrinks extends AppCompatActivity {
         if(numberOfDrinks<5) {
             toReturn = "Sober";
             primaryContact.setTextColor(Color.parseColor("#FF0000"));
+            redWatchBand.setTextColor(Color.parseColor("#000000"));
         }
         else if(numberOfDrinks<10) {
             toReturn = "Tipsy";
@@ -131,6 +132,7 @@ public class AddDrinks extends AppCompatActivity {
         }
         else if(numberOfDrinks<15) {
             toReturn = "Drunk";
+            primaryContact.setTextColor(Color.parseColor("#000000"));
             redWatchBand.setTextColor(Color.parseColor("#FF0000"));
         }
         else
