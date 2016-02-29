@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Write default text message to be sent when intoxicated!"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:id="@+id/textTextView"
+      android:layout_gravity="center_horizontal"
+      android:layout_weight="0.10"
+      android:gravity="center"/>
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="textMultiLine"
+      android:id="@+id/textMessageEdit"
+      android:layout_gravity="center_horizontal"
+      android:lines="6"
+      android:layout_weight="0.30"
+      android:imeOptions="actionDone"
+      android:text="Hey $$contact$$, I have had $$drinkcount$$ tonight and and have an estimated BAC of $$BAC$$. I would like assistance so can you please call or text me as soon as you can.  Attached is my location:"
+      android:gravity="left"/>
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Save Default Text Message"
+      android:id="@+id/saveTextMessage"
+      android:layout_gravity="center_horizontal"
+      android:layout_weight="0.10"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="Key to insert dynamic information:
+      Add name of contact = $$contact$$
+      Add drink count = $$drinkcount$$
+      Add estimated BAC level = $$BAC$$"
+      android:id="@+id/textView2"
+      android:layout_gravity="center_horizontal"
+      android:layout_weight="0.10"
+      android:gravity="center_horizontal"/>
+</LinearLayout>

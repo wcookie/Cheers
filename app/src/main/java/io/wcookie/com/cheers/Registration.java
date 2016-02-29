@@ -105,7 +105,7 @@ public class Registration extends AppCompatActivity {
 
                 if(inputValid) {
 
-                    ApplicationSettings.setBooleanPref(getApplicationContext(),"changeSettings",false);
+                    ApplicationSettings.setBooleanPref(getApplicationContext(),"changeRegistrationSettings",false);
                     ApplicationSettings.setBooleanPref(getApplicationContext(),"infoInputted", true);
                     Intent i = new Intent(Registration.this, AddDrinks.class);
                     startActivity(i);
@@ -139,7 +139,7 @@ public class Registration extends AppCompatActivity {
                 isFemale.setChecked(true);
             }
 
-            if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"changeSettings")) {
+            if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"changeRegistrationSettings")) {
 
                 Intent i = new Intent(Registration.this, AddDrinks.class);
                 startActivity(i);

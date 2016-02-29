@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -39,6 +38,17 @@ public class UpdateContacts extends AppCompatActivity {
             }
         });
 
+        submitButton = (Button) findViewById(R.id.submitButton);
+
+        //Creates contact selecter when contact "+" is clicked
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                finish();
+            }
+        });
+
+    }
 
 //Called when contact selecter is finished and returns the email address of the contact
 
@@ -91,5 +101,4 @@ public class UpdateContacts extends AppCompatActivity {
     }
 }
 
-}
 
