@@ -1,6 +1,7 @@
 package io.wcookie.com.cheers;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,7 +19,8 @@ public class AddDrinks extends AppCompatActivity {
     private TextView drinkCount;
     private int numberOfDrinks;
     private TextView intoxicationLevel;
-
+    private TextView primaryContact;
+    private TextView redWatchBand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class AddDrinks extends AppCompatActivity {
 
         super.onResume();
 
-        Log.d("AddDrinks.java", "registrationInfoInputted: " +ApplicationSettings.getBooleanPref(getApplicationContext(),"registrationInfoInputted"));
+        Log.d("AddDrinks.java", "registrationInfoInputted: " + ApplicationSettings.getBooleanPref(getApplicationContext(), "registrationInfoInputted"));
 
         if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"registrationInfoInputted")){
 
@@ -116,13 +118,21 @@ public class AddDrinks extends AppCompatActivity {
     private String checkDrunkeness(){
 
         String toReturn;
-
-        if(numberOfDrinks<5)
-            toReturn="Sober";
-        else if(numberOfDrinks<10)
-            toReturn="Tipsy";
-        else if(numberOfDrinks<15)
-            toReturn="Drunk";
+        primaryContact = (TextView)findViewById(R.id.test);
+        redWatchBand = (TextView)findViewById(R.id.contactRedWatchBand);
+        if(numberOfDrinks<5) {
+            toReturn = "Sober";
+            primaryContact.setTextColor(Color.parseColor("#FF0000"));
+        }
+        else if(numberOfDrinks<10) {
+            toReturn = "Tipsy";
+            primaryContact.setTextColor(Color.parseColor("#FF0000"));
+            redWatchBand.setTextColor(Color.parseColor("#FF0000"));
+        }
+        else if(numberOfDrinks<15) {
+            toReturn = "Drunk";
+            redWatchBand.setTextColor(Color.parseColor("#FF0000"));
+        }
         else
             toReturn="Call for Help";
 
