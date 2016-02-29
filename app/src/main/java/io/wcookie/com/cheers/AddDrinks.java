@@ -30,7 +30,6 @@ public class AddDrinks extends AppCompatActivity {
         drinkCount = (TextView) findViewById(R.id.drinkCount);
         intoxicationLevel = (TextView) findViewById(R.id.intoxicationLevel);
         numberOfDrinks=0;
-        ApplicationSettings.setBooleanPref(getApplicationContext(),"changeRegistrationSettings",false);
 
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -57,6 +56,23 @@ public class AddDrinks extends AppCompatActivity {
 
     }
 
+    public void onResume(){
+
+        super.onResume();
+
+        if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"registrationInfoInputted")){
+
+            Intent i = new Intent(AddDrinks.this, Registration.class);
+            startActivity(i);
+        }
+
+        if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"contactInfoInputted")){
+
+            Intent i = new Intent(AddDrinks.this, UpdateContacts.class);
+            startActivity(i);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -76,21 +92,18 @@ public class AddDrinks extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_changeRegistration) {
 
-            ApplicationSettings.setBooleanPref(getApplicationContext(),"changeRegistrationSettings",true);
             Intent i = new Intent(AddDrinks.this, Registration.class);
             startActivity(i);
         }
 
         else if(id == R.id.action_changeContacts){
 
-            ApplicationSettings.setBooleanPref(getApplicationContext(),"changeContactsSettings",true);
             Intent i = new Intent(AddDrinks.this, UpdateContacts.class);
             startActivity(i);
         }
 
         else if(id == R.id.action_changeText){
 
-            ApplicationSettings.setBooleanPref(getApplicationContext(),"changeTextSettings",true);
             Intent i = new Intent(AddDrinks.this, ChangeText.class);
             startActivity(i);
         }

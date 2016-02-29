@@ -39,10 +39,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="?android:attr/textAppearanceMedium"
-      android:text="Key to insert dynamic information:
-      Add name of contact = $$contact$$
-      Add drink count = $$drinkcount$$
-      Add estimated BAC level = $$BAC$$"
+      android:text="Key to insert dynamic information:\nAdd name of contact = $$contact$$\nAdd drink count = $$drinkcount$$\nAdd estimated BAC level = $$BAC$$"
       android:id="@+id/textView2"
       android:layout_gravity="center_horizontal"
       android:layout_weight="0.10"

@@ -44,6 +44,7 @@ public class UpdateContacts extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
+                ApplicationSettings.setBooleanPref(getApplicationContext(),"contactInfoInputted",true);
                 finish();
             }
         });

@@ -3,7 +3,6 @@ package io.wcookie.com.cheers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +34,26 @@ public class Registration extends AppCompatActivity {
         weight = (EditText) findViewById(R.id.Weight);
         isMale = (RadioButton)  findViewById(R.id.radioButtonMale);
         isFemale =(RadioButton)  findViewById(R.id.radioButtonFemale);
+
+        if(ApplicationSettings.getBooleanPref(getApplicationContext(),"infoInputted")){
+
+            registerButton.setText("Update Information");
+            firstName.setText(ApplicationSettings.getStringPref(getApplicationContext(),"firstName"));
+            lastName.setText(ApplicationSettings.getStringPref(getApplicationContext(),"lastName"));
+            age.setText(""+ApplicationSettings.getIntPref(getApplicationContext(),"age"));
+            weight.setText(""+ApplicationSettings.getIntPref(getApplicationContext(),"weight"));
+
+            if(ApplicationSettings.getBooleanPref(getApplicationContext(),"SexIsMale")) {
+                isMale.setChecked(true);
+                isFemale.setChecked(false);
+            }
+
+            else{
+                isMale.setChecked(false);
+                isFemale.setChecked(true);
+            }
+
+        }
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,46 +124,13 @@ public class Registration extends AppCompatActivity {
 
                 if(inputValid) {
 
-                    ApplicationSettings.setBooleanPref(getApplicationContext(),"changeRegistrationSettings",false);
-                    ApplicationSettings.setBooleanPref(getApplicationContext(),"infoInputted", true);
+                    ApplicationSettings.setBooleanPref(getApplicationContext(),"registrationInfoInputted",true);
                     Intent i = new Intent(Registration.this, AddDrinks.class);
                     startActivity(i);
                 }
             }
         });
 
-    }
-
-    public void onResume(){
-
-        super.onResume();
-
-        Log.d("Registration", "Info inputted: " + ApplicationSettings.getBooleanPref(getApplicationContext(),"infoInputted"));
-
-        if(ApplicationSettings.getBooleanPref(getApplicationContext(),"infoInputted")){
-
-            registerButton.setText("Update Information");
-            firstName.setText(ApplicationSettings.getStringPref(getApplicationContext(),"firstName"));
-            lastName.setText(ApplicationSettings.getStringPref(getApplicationContext(),"lastName"));
-            age.setText(""+ApplicationSettings.getIntPref(getApplicationContext(),"age"));
-            weight.setText(""+ApplicationSettings.getIntPref(getApplicationContext(),"weight"));
-
-            if(ApplicationSettings.getBooleanPref(getApplicationContext(),"SexIsMale")) {
-                isMale.setChecked(true);
-                isFemale.setChecked(false);
-            }
-
-            else{
-                isMale.setChecked(false);
-                isFemale.setChecked(true);
-            }
-
-            if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"changeRegistrationSettings")) {
-
-                Intent i = new Intent(Registration.this, AddDrinks.class);
-                startActivity(i);
-            }
-        }
     }
 
     @Override
