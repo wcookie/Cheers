@@ -57,7 +57,7 @@ public class UpdateContacts extends AppCompatActivity {
             switch (requestCode) {
                 case CONTACT_PICKER_RESULT:
                     Cursor cursor = null;
-                    String email = "";
+                    String phoneNumber = "";
                     try {
                         Uri result = data.getData();
                         Log.v(TAG, "Got a contact result: "
@@ -66,30 +66,30 @@ public class UpdateContacts extends AppCompatActivity {
                         // get the contact id from the Uri
                         String id = result.getLastPathSegment();
 
-                        // query for everything email
-                        cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,
-                                null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + "=?", new String[]{id},
+                        // query for everything phoneNumber
+                        cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                                null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", new String[]{id},
                                 null);
 
-                        int emailIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA);
+                        int phoneIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA);
 
-                        // let's just get the first email
+                        // let's just get the first phoneNumber
                         if (cursor.moveToFirst()) {
-                            email = cursor.getString(emailIdx);
-                            Log.v(TAG, "Got email: " + email);
+                            phoneNumber = cursor.getString(phoneIdx);
+                            Log.v(TAG, "Got Phone Number: " + phoneNumber);
                         } else {
                             Log.w(TAG, "No results");
                         }
                     } catch (Exception e) {
-                        Log.e(TAG, "Failed to get email data", e);
+                        Log.e(TAG, "Failed to get Phone Number data", e);
                     } finally {
                         if (cursor != null) {
                             cursor.close();
                         }
                         //EditText emailEntry = (EditText) findViewById(R.id.contactText);
-                        //emailEntry.setText(email);
-                        if (email.length() == 0) {
-                            Toast.makeText(this, "No email found for contact.",
+                        //emailEntry.setText(phoneNumber);
+                        if (phoneNumber.length() == 0) {
+                            Toast.makeText(this, "No Phone Number found for contact.",
                                     Toast.LENGTH_LONG).show();
                         }
 
