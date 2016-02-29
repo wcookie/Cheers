@@ -8,14 +8,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 public class AddDrinks extends AppCompatActivity {
 
-    private Button plusButton;
-    private Button minusButton;
+    private ImageButton plusButton;
+    private ImageButton minusButton;
     private TextView drinkCount;
     private int numberOfDrinks;
     private TextView intoxicationLevel;
@@ -29,8 +29,8 @@ public class AddDrinks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drinks);
 
-        plusButton = (Button) findViewById(R.id.plusButton);
-        minusButton = (Button) findViewById(R.id.minusButton);
+        plusButton = (ImageButton) findViewById(R.id.plusButton);
+        minusButton = (ImageButton) findViewById(R.id.minusButton);
         drinkCount = (TextView) findViewById(R.id.drinkCount);
         intoxicationLevel = (TextView) findViewById(R.id.intoxicationLevel);
         primaryContact = (TextView)findViewById(R.id.contactFriend1);

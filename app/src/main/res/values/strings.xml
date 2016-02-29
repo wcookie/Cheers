@@ -3,4 +3,5 @@
     <string name="action_changeRegistration">Change Registration Information</string>
     <string name="action_changeContacts">Update Contacts</string>
     <string name="action_changeText">Update Text</string>
+    <string name="action_registerRedWatch">Register as Red Watch Band</string>
 </resources>
