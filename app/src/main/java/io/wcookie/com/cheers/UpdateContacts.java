@@ -72,7 +72,7 @@ public class UpdateContacts extends AppCompatActivity {
                                 null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", new String[]{id},
                                 null);
 
-                        int phoneIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA);
+                        int phoneIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
 
                         // let's just get the first phoneNumber
                         if (cursor.moveToFirst()) {
