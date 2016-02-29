@@ -3,6 +3,7 @@ package io.wcookie.com.cheers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,12 +54,13 @@ public class AddDrinks extends AppCompatActivity {
 
         });
 
-
     }
 
     public void onResume(){
 
         super.onResume();
+
+        Log.d("AddDrinks.java", "registrationInfoInputted: " +ApplicationSettings.getBooleanPref(getApplicationContext(),"registrationInfoInputted"));
 
         if(!ApplicationSettings.getBooleanPref(getApplicationContext(),"registrationInfoInputted")){
 
