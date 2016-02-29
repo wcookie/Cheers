@@ -1,15 +1,15 @@
 package io.wcookie.com.cheers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 /**
  * Created by wcook on 2/28/2016.
@@ -19,24 +19,49 @@ public class UpdateContacts extends AppCompatActivity {
     private Button primaryContact;
     private Button secondaryContact;
     private Button submitButton;
+    private TextView primaryTextView;
+    private TextView secondaryTextView;
+
     private static final String TAG = "UpdateContacts";
-    private static final int CONTACT_PICKER_RESULT = 1001;
+    static final int PICK_CONTACT_PRIMARY=1;
+    static final int PICK_CONTACT_SECONDARY=2;
+
+    private String primaryName;
+    private String primaryNumber;
+    private String secondaryName;
+    private String secondaryNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_contacts);
+
         primaryContact = (Button) findViewById(R.id.primaryContact);
 
         //Creates contact selecter when contact "+" is clicked
         primaryContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
-                        ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+
+                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, PICK_CONTACT_PRIMARY);
             }
         });
+
+        primaryTextView = (TextView)  findViewById(R.id.primaryTextView);
+
+
+        secondaryContact = (Button) findViewById(R.id.secondaryContact);
+
+        secondaryContact.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, PICK_CONTACT_SECONDARY);
+            }
+        });
+
+        secondaryTextView = (TextView)  findViewById(R.id.secondaryTextView);
 
         submitButton = (Button) findViewById(R.id.submitButton);
 
@@ -45,61 +70,93 @@ public class UpdateContacts extends AppCompatActivity {
             public void onClick(View view) {
 
                 ApplicationSettings.setBooleanPref(getApplicationContext(),"contactInfoInputted",true);
+                ApplicationSettings.setStringPref(getApplicationContext(),"primaryName",primaryName);
+                ApplicationSettings.setStringPref(getApplicationContext(),"primaryNumber",primaryNumber);
+                ApplicationSettings.setStringPref(getApplicationContext(),"secondaryName",secondaryName);
+                ApplicationSettings.setStringPref(getApplicationContext(),"secondaryNumber",secondaryNumber);
                 finish();
             }
         });
 
+        if(ApplicationSettings.getBooleanPref(getApplicationContext(),"contactInfoInputted")){
+
+            primaryName = ApplicationSettings.getStringPref(getApplicationContext(),"primaryName");
+            primaryNumber= ApplicationSettings.getStringPref(getApplicationContext(),"primaryNumber");
+            secondaryName= ApplicationSettings.getStringPref(getApplicationContext(),"secondaryName");
+            secondaryNumber= ApplicationSettings.getStringPref(getApplicationContext(),"secondaryNumber");
+
+            primaryTextView.setText(primaryName + ": " + primaryNumber);
+            secondaryTextView.setText(secondaryName + ": " + secondaryNumber);
+
+        }
+
     }
 
-//Called when contact selecter is finished and returns the email address of the contact
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case CONTACT_PICKER_RESULT:
-                    Cursor cursor = null;
-                    String phoneNumber = "";
-                    try {
-                        Uri result = data.getData();
-                        Log.v(TAG, "Got a contact result: "
-                                + result.toString());
+        switch (reqCode) {
+            case (PICK_CONTACT_PRIMARY) :
+                if (resultCode == Activity.RESULT_OK) {
 
-                        // get the contact id from the Uri
-                        String id = result.getLastPathSegment();
+                    Uri contactData = data.getData();
+                    Cursor c =  managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
 
-                        // query for everything phoneNumber
-                        cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                                null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", new String[]{id},
-                                null);
 
-                        int phoneIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                        String id =c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
 
-                        // let's just get the first phoneNumber
-                        if (cursor.moveToFirst()) {
-                            phoneNumber = cursor.getString(phoneIdx);
-                            Log.v(TAG, "Got Phone Number: " + phoneNumber);
-                        } else {
-                            Log.w(TAG, "No results");
+                        String hasPhone =c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+
+                        if (hasPhone.equalsIgnoreCase("1")) {
+                            Cursor phones = getContentResolver().query(
+                                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,
+                                    null, null);
+                            phones.moveToFirst();
+                            primaryNumber = phones.getString(phones.getColumnIndex("data1"));
+
                         }
-                    } catch (Exception e) {
-                        Log.e(TAG, "Failed to get Phone Number data", e);
-                    } finally {
-                        if (cursor != null) {
-                            cursor.close();
-                        }
-                        //EditText emailEntry = (EditText) findViewById(R.id.contactText);
-                        //emailEntry.setText(phoneNumber);
-                        if (phoneNumber.length() == 0) {
-                            Toast.makeText(this, "No Phone Number found for contact.",
-                                    Toast.LENGTH_LONG).show();
-                        }
+                        primaryName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+
+                        primaryTextView.setText(primaryName + ": " + primaryNumber);
 
                     }
+                }
+                break;
+            case(PICK_CONTACT_SECONDARY):
 
-                    break;
-            }
+                if (resultCode == Activity.RESULT_OK) {
+
+                    Uri contactData = data.getData();
+                    Cursor c =  managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+
+
+                        String id =c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+
+                        String hasPhone =c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+
+                        if (hasPhone.equalsIgnoreCase("1")) {
+                            Cursor phones = getContentResolver().query(
+                                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,
+                                    null, null);
+                            phones.moveToFirst();
+                            secondaryNumber = phones.getString(phones.getColumnIndex("data1"));
+
+                        }
+                        secondaryName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+
+                        secondaryTextView.setText(secondaryName + ": " + secondaryNumber);
+                    }
+                }
+                break;
         }
     }
+
 }
 
 

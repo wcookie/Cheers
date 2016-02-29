@@ -38,4 +38,22 @@
         android:id="@+id/submitButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/primaryTextView"
+        android:layout_below="@+id/primaryContact"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/secondaryTextView"
+        android:layout_below="@+id/secondaryContact"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
