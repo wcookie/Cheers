@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/test"
+                android:id="@+id/contactFriend1"
                 android:text="Contact Chris"
                 android:textSize = "25dp"
                 android:layout_alignParentTop="true"
@@ -174,7 +174,7 @@
                 android:text="Contact Wyatt"
                 android:textSize = "25dp"
                 android:layout_marginTop="17dp"
-                android:layout_below="@+id/test"
+                android:layout_below="@+id/contactFriend1"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 

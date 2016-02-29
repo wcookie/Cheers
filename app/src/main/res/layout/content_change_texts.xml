@@ -24,7 +24,7 @@
       android:lines="6"
       android:layout_weight="0.30"
       android:imeOptions="actionDone"
-      android:text="Hey $$contact$$, I have had $$drinkcount$$ tonight and and have an estimated BAC of $$BAC$$. I would like assistance so can you please call or text me as soon as you can.  Attached is my location:"
+      android:text="Hey $$contact$$, I have had $$drinkcount$$ drinks tonight and and have an estimated BAC of $$BAC$$. I would like assistance so can you please call or text me as soon as you can.  Attached is my location:"
       android:gravity="left"/>
 
   <Button

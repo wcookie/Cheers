@@ -20,6 +20,7 @@ public class AddDrinks extends AppCompatActivity {
     private int numberOfDrinks;
     private TextView intoxicationLevel;
     private TextView primaryContact;
+    private TextView secondaryContact;
     private TextView redWatchBand;
 
     @Override
@@ -32,7 +33,15 @@ public class AddDrinks extends AppCompatActivity {
         minusButton = (Button) findViewById(R.id.minusButton);
         drinkCount = (TextView) findViewById(R.id.drinkCount);
         intoxicationLevel = (TextView) findViewById(R.id.intoxicationLevel);
-        numberOfDrinks=0;
+        primaryContact = (TextView)findViewById(R.id.contactFriend1);
+        secondaryContact = (TextView)findViewById(R.id.contactFriend2);
+        redWatchBand = (TextView)findViewById(R.id.contactRedWatchBand);
+        numberOfDrinks=ApplicationSettings.getIntPref(getApplicationContext(),"numberOfDrinks");
+        drinkCount.setText(""+numberOfDrinks);
+        intoxicationLevel.setText(checkDrunkeness());
+
+        primaryContact.setText(ApplicationSettings.getStringPref(getApplicationContext(),"primaryName"));
+        secondaryContact.setText(ApplicationSettings.getStringPref(getApplicationContext(),"secondaryName"));
 
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,6 +49,7 @@ public class AddDrinks extends AppCompatActivity {
                 numberOfDrinks++;
                 drinkCount.setText(""+numberOfDrinks);
                 intoxicationLevel.setText(checkDrunkeness());
+                ApplicationSettings.setIntPref(getApplicationContext(),"numberOfDrinks", numberOfDrinks);
             }
 
         });
@@ -50,6 +60,7 @@ public class AddDrinks extends AppCompatActivity {
                 if(numberOfDrinks>0) {
                     numberOfDrinks--;
                     drinkCount.setText(""+numberOfDrinks);
+                    ApplicationSettings.setIntPref(getApplicationContext(),"numberOfDrinks", numberOfDrinks);
                     intoxicationLevel.setText(checkDrunkeness());
                 }
             }
@@ -118,25 +129,30 @@ public class AddDrinks extends AppCompatActivity {
     private String checkDrunkeness(){
 
         String toReturn;
-        primaryContact = (TextView)findViewById(R.id.test);
-        redWatchBand = (TextView)findViewById(R.id.contactRedWatchBand);
         if(numberOfDrinks<5) {
             toReturn = "Sober";
-            primaryContact.setTextColor(Color.parseColor("#FF0000"));
+            primaryContact.setTextColor(Color.parseColor("#000000"));
+            secondaryContact.setTextColor(Color.parseColor("#000000"));
             redWatchBand.setTextColor(Color.parseColor("#000000"));
         }
         else if(numberOfDrinks<10) {
             toReturn = "Tipsy";
             primaryContact.setTextColor(Color.parseColor("#FF0000"));
-            redWatchBand.setTextColor(Color.parseColor("#FF0000"));
+            secondaryContact.setTextColor(Color.parseColor("#FF0000"));
+            redWatchBand.setTextColor(Color.parseColor("#000000"));
         }
         else if(numberOfDrinks<15) {
             toReturn = "Drunk";
-            primaryContact.setTextColor(Color.parseColor("#000000"));
+            primaryContact.setTextColor(Color.parseColor("#FF0000"));
+            secondaryContact.setTextColor(Color.parseColor("#FF0000"));
             redWatchBand.setTextColor(Color.parseColor("#FF0000"));
         }
-        else
-            toReturn="Call for Help";
+        else {
+            primaryContact.setTextColor(Color.parseColor("#000000"));
+            secondaryContact.setTextColor(Color.parseColor("#000000"));
+            redWatchBand.setTextColor(Color.parseColor("#FF0000"));
+            toReturn = "Call for Help";
+        }
 
         return toReturn;
     }
