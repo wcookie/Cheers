@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,7 +24,7 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_registration_2);
 
         registerButton = (Button) findViewById(R.id.RegisterButton);
         firstName = (EditText) findViewById(R.id.FirstName);
@@ -52,6 +53,16 @@ public class Registration extends AppCompatActivity {
             }
 
         }
+
+        android.support.v7.widget.CardView card= (android.support.v7.widget.CardView) findViewById(R.id.cv);
+
+        card.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -65,6 +65,8 @@ public class UpdateContacts extends AppCompatActivity {
 
         submitButton = (Button) findViewById(R.id.submitButton);
 
+
+
         //Creates contact selecter when contact "+" is clicked
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -85,8 +87,11 @@ public class UpdateContacts extends AppCompatActivity {
             secondaryName= ApplicationSettings.getStringPref(getApplicationContext(),"secondaryName");
             secondaryNumber= ApplicationSettings.getStringPref(getApplicationContext(),"secondaryNumber");
 
-            primaryTextView.setText(primaryName + ": " + primaryNumber);
-            secondaryTextView.setText(secondaryName + ": " + secondaryNumber);
+            if(primaryName!=null)
+                primaryTextView.setText(primaryName + ": " + primaryNumber);
+
+            if(secondaryName!=null)
+                secondaryTextView.setText(secondaryName + ": " + secondaryNumber);
 
         }
 

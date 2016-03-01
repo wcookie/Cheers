@@ -128,15 +128,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/cv3"
         android:layout_below="@+id/cv2"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="28dp">
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="10dp">
 
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="16dp"
             android:id="@+id/relativeLayout3">
             <TextView
@@ -144,7 +145,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/contactFriend1"
-                android:text="Contact Chris"
                 android:textSize = "25dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
@@ -178,7 +178,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/contactFriend2"
-                android:text="Contact Wyatt"
                 android:textSize = "25dp"
                 android:layout_marginTop="17dp"
                 android:layout_below="@+id/contactFriend1"

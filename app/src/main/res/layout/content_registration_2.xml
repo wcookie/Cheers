@@ -24,7 +24,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="800dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:id="@+id/cv"
         android:layout_below="@+id/InformationTitle"
         android:layout_alignParentLeft="true"
@@ -36,6 +36,16 @@
             android:padding="16dp"
             >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/firstNameError"
+                android:textColor="#ff0000"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentLeft="true"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -44,9 +54,18 @@
                 android:text="First Name"
                 android:ems="10"
                 android:id="@+id/FirstName"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_below="@+id/firstNameError"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/lastNameError"
+                android:textColor="#ff0000"
+                android:layout_below="@+id/FirstName"
+                android:layout_alignParentLeft="true"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -55,9 +74,20 @@
                 android:text="Last Name"
                 android:ems="10"
                 android:id="@+id/LastName"
-                android:layout_below="@+id/FirstName"
+                android:layout_below="@+id/lastNameError"
                 android:layout_alignLeft="@+id/FirstName"
-                android:layout_alignStart="@+id/FirstName" />
+                android:layout_alignStart="@+id/FirstName"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/ageError"
+                android:textColor="#ff0000"
+                android:layout_below="@+id/LastName"
+                android:layout_alignParentLeft="true"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -65,10 +95,21 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/Age"
-                android:layout_below="@+id/LastName"
+                android:layout_below="@+id/ageError"
                 android:layout_alignLeft="@+id/LastName"
                 android:layout_alignStart="@+id/LastName"
-                android:text="Age" />
+                android:text="Age"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/weightError"
+                android:textColor="#ff0000"
+                android:layout_below="@+id/Age"
+                android:layout_alignParentLeft="true"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -76,16 +117,17 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/Weight"
-                android:layout_below="@+id/Age"
+                android:layout_below="@+id/weightError"
                 android:layout_alignLeft="@+id/Age"
                 android:layout_alignStart="@+id/Age"
-                android:text="Weight" />
+                android:text="Weight"
+                android:layout_alignParentLeft="true"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:layout_width="800dp"
-        android:layout_height="125dp"
+        android:layout_height="wrap_content"
         android:id="@+id/cv2"
         android:layout_below="@+id/cv"
         android:layout_marginTop="20dp"
@@ -102,9 +144,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
                 android:id="@+id/Sex"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
 
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:id="@+id/radioButtonFemale"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignLeft="@+id/RegisterButton"
+                    android:layout_alignStart="@+id/RegisterButton"
+                    android:layout_marginLeft="54dp"
+                    android:layout_marginStart="54dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:id="@+id/radioButtonMale"
+                    android:checked="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/RegisterButton"
+                    android:layout_alignEnd="@+id/RegisterButton"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginEnd="47dp" />
 
             </RadioGroup>
 
@@ -114,31 +181,10 @@
                 android:text="Register"
                 android:id="@+id/RegisterButton"
                 android:layout_gravity="center_horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_below="@+id/Sex"
+                android:layout_centerHorizontal="true"/>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                android:id="@+id/radioButtonFemale"
-                android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/RegisterButton"
-                android:layout_alignStart="@+id/RegisterButton"
-                android:layout_marginLeft="54dp"
-                android:layout_marginStart="54dp" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                android:id="@+id/radioButtonMale"
-                android:checked="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignRight="@+id/RegisterButton"
-                android:layout_alignEnd="@+id/RegisterButton"
-                android:layout_marginRight="47dp"
-                android:layout_marginEnd="47dp" />
 
 
         </RelativeLayout>

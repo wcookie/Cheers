@@ -1,7 +1,9 @@
 package io.wcookie.com.cheers;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +20,12 @@ public class AddDrinks extends AppCompatActivity {
     private ImageButton minusButton;
     private TextView drinkCount;
     private int numberOfDrinks;
+    private ImageButton primaryPhone;
+    private ImageButton secondaryPhone;
+    private ImageButton redWatchBandPhone;
+    private ImageButton primaryText;
+    private ImageButton secondaryText;
+    private ImageButton redWatchBandText;
     private TextView intoxicationLevel;
     private TextView primaryContact;
     private TextView secondaryContact;
@@ -36,12 +44,30 @@ public class AddDrinks extends AppCompatActivity {
         primaryContact = (TextView)findViewById(R.id.contactFriend1);
         secondaryContact = (TextView)findViewById(R.id.contactFriend2);
         redWatchBand = (TextView)findViewById(R.id.contactRedWatchBand);
+        primaryPhone = (ImageButton)findViewById(R.id.callFriend);
+        secondaryPhone = (ImageButton)findViewById(R.id.callFriend2);
+        redWatchBandPhone = (ImageButton)findViewById(R.id.callRedWatchBand);
+        primaryText = (ImageButton)findViewById(R.id.msgFriend);
+        secondaryText = (ImageButton)findViewById(R.id.msgFriend2);
+        redWatchBandText = (ImageButton)findViewById(R.id.msgRedWatchBand);
+
+
         numberOfDrinks=ApplicationSettings.getIntPref(getApplicationContext(),"numberOfDrinks");
+
+        if(numberOfDrinks<0)
+            numberOfDrinks=0;
+
         drinkCount.setText(""+numberOfDrinks);
         intoxicationLevel.setText(checkDrunkeness());
 
-        primaryContact.setText(ApplicationSettings.getStringPref(getApplicationContext(),"primaryName"));
-        secondaryContact.setText(ApplicationSettings.getStringPref(getApplicationContext(),"secondaryName"));
+        String temp =ApplicationSettings.getStringPref(getApplicationContext(),"primaryName");
+        if(temp!=null)
+            primaryContact.setText(temp);
+
+        temp =ApplicationSettings.getStringPref(getApplicationContext(),"secondaryName");
+
+        if(temp!=null)
+            secondaryContact.setText(temp);
 
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -66,6 +92,32 @@ public class AddDrinks extends AppCompatActivity {
             }
 
         });
+
+        primaryPhone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + ApplicationSettings.getStringPref(getApplicationContext(),"primaryNumber")));
+                int res = getApplicationContext().checkCallingOrSelfPermission("android.permission.CALL_PHONE");
+                if (res == PackageManager.PERMISSION_GRANTED)
+                    startActivity(callIntent);
+            }
+
+        });
+
+        secondaryPhone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + ApplicationSettings.getStringPref(getApplicationContext(),"secondaryNumber")));
+                int res = getApplicationContext().checkCallingOrSelfPermission("android.permission.CALL_PHONE");
+                if (res == PackageManager.PERMISSION_GRANTED)
+                    startActivity(callIntent);
+            }
+
+        });
+
+
 
     }
 
