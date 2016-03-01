@@ -12,13 +12,13 @@ public class ChangeText extends AppCompatActivity {
 
     private Button saveTextMessage;
     private EditText textMessageEdit;
-    private TextView textTextView;
+    private TextView InformationTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_texts);
+        setContentView(R.layout.activity_change_texts_2);
 
         textMessageEdit=(EditText) findViewById(R.id.textMessageEdit);
 
@@ -33,9 +33,9 @@ public class ChangeText extends AppCompatActivity {
             }
         });
 
-        textTextView= (TextView) findViewById(R.id.textTextView);
+        InformationTitle= (TextView) findViewById(R.id.InformationTitle);
 
-        textTextView.setOnClickListener(new View.OnClickListener() {
+        InformationTitle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
