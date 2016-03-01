@@ -18,7 +18,7 @@ public class ChangeText extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_texts_2);
+        setContentView(R.layout.activity_change_texts);
 
         textMessageEdit=(EditText) findViewById(R.id.textMessageEdit);
 
@@ -42,8 +42,6 @@ public class ChangeText extends AppCompatActivity {
                 inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
             }
         });
-
-
 
     }
 
