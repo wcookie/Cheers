@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="io.wcookie.com.cheers.Registration"
+    tools:showIn="@layout/activity_registration_2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter your Information"
+        android:id="@+id/InformationTitle"
+        android:paddingBottom="16dp"
+        android:paddingTop="8dp"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="200dp"
+        android:id="@+id/cv"
+        android:layout_below="@+id/InformationTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            >
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="First Name"
+                android:ems="10"
+                android:id="@+id/FirstName"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Last Name"
+                android:ems="10"
+                android:id="@+id/LastName"
+                android:layout_below="@+id/FirstName"
+                android:layout_alignLeft="@+id/FirstName"
+                android:layout_alignStart="@+id/FirstName" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/Age"
+                android:layout_below="@+id/LastName"
+                android:layout_alignLeft="@+id/LastName"
+                android:layout_alignStart="@+id/LastName"
+                android:text="Age" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/Weight"
+                android:layout_below="@+id/Age"
+                android:layout_alignLeft="@+id/Age"
+                android:layout_alignStart="@+id/Age"
+                android:text="Weight" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="125dp"
+        android:id="@+id/cv2"
+        android:layout_below="@+id/cv"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            >
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/Sex"
+                android:orientation="horizontal">
+
+
+            </RadioGroup>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:id="@+id/RegisterButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:id="@+id/radioButtonFemale"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/RegisterButton"
+                android:layout_alignStart="@+id/RegisterButton"
+                android:layout_marginLeft="54dp"
+                android:layout_marginStart="54dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:id="@+id/radioButtonMale"
+                android:checked="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/RegisterButton"
+                android:layout_alignEnd="@+id/RegisterButton"
+                android:layout_marginRight="47dp"
+                android:layout_marginEnd="47dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
