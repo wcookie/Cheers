@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="io.wcookie.com.cheers.Registration"
+    tools:showIn="@layout/activity_change_texts_2">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Write default text message to be sent when intoxicated!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/InformationTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.10"
+        android:paddingTop="10dp"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        android:layout_below="@+id/InformationTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:id="@+id/textMessageEdit"
+                android:layout_gravity="center_horizontal"
+                android:lines="6"
+                android:layout_weight="0.30"
+                android:background="@android:color/transparent"
+                android:imeOptions="actionDone"
+                android:text="Hey **contact**, I have had **drinkcount** drinks tonight and and have an estimated BAC of **BAC**. I would like assistance so can you please call or text me as soon as you can.  Attached is my location:"
+                android:gravity="left"/>
+
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Default Message"
+        android:id="@+id/saveTextMessage"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv2"
+        android:layout_below="@+id/saveTextMessage"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Key to insert dynamic information:\nAdd name of contact = **contact**\nAdd drink count = **drinkcount**\nAdd estimated BAC level = **BAC**"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.10"
+                android:gravity="center_horizontal"/>
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
