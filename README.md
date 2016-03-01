@@ -2,21 +2,21 @@
 
 ## Screenshots
 
-![Screenshot1](http://imgur.com/fx7mvv2 "Screenshot 1")
+![Screenshot1](http://i.imgur.com/fx7mvv2.png "Screenshot 1")
 
 
-![Screenshot2](http://imgur.com/YoAPRb1 "Screenshot 2")
+![Screenshot2](http://i.imgur.com/YoAPRb1.png "Screenshot 2")
 
 
-![Screenshot3](http://imgur.com/FJpC3TR "Screenshot 3")
+![Screenshot3](http://i.imgur.com/FJpC3TR.png "Screenshot 3")
 
 
-![Screenshot4](http://imgur.com/QciV4DG "Screenshot 4")
+![Screenshot4](http://i.imgur.com/QciV4DG.png "Screenshot 4")
 
 
-![Screenshot5](http://imgur.com/foL67PJ "Screenshot 5")
+![Screenshot5](http://i.imgur.com/foL67PJ.png "Screenshot 5")
 
 
-![Screenshot6](http://imgur.com/tqbaXpu "Screenshot 6")
+![Screenshot6](http://i.imgur.com/tqbaXpu.png "Screenshot 6")
 
 
